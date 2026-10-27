@@ -1,0 +1,264 @@
+/* 1. RESET DE ESTILOS Y VARIABLES GLOBALES */
+:root {
+    --primary-color: #0d6efd;   /* Azul principal */
+    --secondary-color: #198754; /* Verde para WhatsApp/acciones */
+    --dark-color: #212529;      /* Texto y fondos oscuros */
+    --light-color: #2e4181a3;     /* Fondos claros */
+    --border-color: #a1c377;
+    --font-stack: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Previene que el padding altere el ancho real de los elementos */
+}
+
+body {
+    font-family: var(--font-stack);
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: var(--light-color);
+}
+
+/* 2. ENCABEZADO Y NAVEGACIÓN (FLEXBOX) */
+.main-header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-size: 1.25rem;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--primary-color);
+}
+
+/* 3. SECCIÓN HERO */
+.hero {
+    text-align: center;
+    padding: 6rem 1rem; /* Aumentamos el relleno para que la sección luzca más alta */
+    
+    /* 1. Imagen de fondo con capa oscura semitransparente (overlay) */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('../img/fondo-hero.jpg');
+    
+    /* 2. Propiedades de ajuste de la imagen */
+    background-size: cover;       /* Escalado para cubrir todo el ancho y alto de la sección */
+    background-position: center;  /* Centra la foto para que no se corte lo principal */
+    background-repeat: no-repeat; /* Evita que la imagen se repita si es pequeña */
+    
+    /* 3. Colores de texto en blanco para resaltar sobre el fondo oscuro */
+    color: #ffffff;
+}
+
+/* Color del título principal en el Hero */
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); /* Sombra ligera para mejorar legibilidad */
+}
+
+/* Color del texto descriptivo en el Hero */
+.hero p {
+    color: #f1f5f9; /* Blanco suave / gris muy claro */
+    font-size: 1.1rem;
+    max-width: 650px;
+    margin: 0 auto 2rem auto;
+}
+/* Fondos personalizados por sección */
+.hero-inicio {
+    background-image: linear-gradient(rgba(51, 51, 51, 0.65), rgba(60, 60, 60, 0.65)), url('../img/FondoInicio.jpg');
+}
+
+.hero-cam {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('../img/FondoCam.jpg');
+}
+
+.hero-red {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('../img/FondoRed.jpg');
+}
+
+.hero-3d {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('../img/Fondo3D.jpg');
+}
+
+.hero-cnc {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('../img/FondoCNC.jpg');
+}
+
+/* BOTÓN DE WHATSAPP */
+.btn-whatsapp {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+.btn-whatsapp:hover {
+    opacity: 0.9;
+}
+
+/* 4. REJILLA DE SERVICIOS (GRID LAYOUT) */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: white;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.card a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* 5. PIE DE PÁGINA */
+.main-footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--dark-color);
+    color: white;
+    margin-top: 2rem;
+}
+/* --- DISEÑO RESPONSIVO PARA DISPOSITIVOS MÓVILES (Menos de 768px) --- */
+@media (max-width: 768px) {
+    
+    /* 1. Apilar el encabezado verticalmente en lugar de horizontal */
+    .main-header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    /* 2. Ajustar la lista de navegación para que no se desborde */
+    .navbar ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+    }
+
+    /* 3. Reducir el tamaño de los títulos principales en celulares */
+    .hero {
+        padding: 2.5rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    /* 4. Forzar que las tarjetas de servicio ocupen todo el ancho */
+    .services-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+}
+/* Ocultar el botón en pantallas grandes */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* Ajustes dentro del @media (max-width: 768px) */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block; /* Mostrar botón en móviles */
+    }
+
+    .navbar ul {
+        display: none; /* Ocultar menú por defecto en móviles */
+        width: 100%;
+        flex-direction: column;
+        padding-top: 1rem;
+    }
+
+    /* Clase que activará JavaScript para mostrar el menú */
+    .navbar ul.nav-menu_visible {
+        display: flex;
+    }
+}
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366; /* Color oficial de WhatsApp */
+    border-radius: 50px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 100;
+    transition: transform 0.2s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+/* Alineación horizontal de la imagen del logo y el texto */
+.logo a {
+    display: flex;
+    align-items: center;      /* Centra verticalmente la imagen con el texto */
+    gap: 0.5rem;              /* Espacio entre la imagen y el texto */
+    text-decoration: none;
+    color: var(--dark-color);
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* Control del tamaño de la imagen del logo */
+.logo-img {
+    height: 100px;             /* Define una altura fija adecuada para el menú */
+    width: auto;              /* Mantiene la proporción de la imagen sin deformarla */
+    object-fit: contain;
+}
